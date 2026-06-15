@@ -1,0 +1,10 @@
+{
+  "name": "Kick Stream AI Control Panel",
+  "description": "Full-scale stream control panel for Kick.com channels featuring live chat tracking, AI moderator bot integration, Text-to-Speech (TTS), and real-time chat analytics.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
