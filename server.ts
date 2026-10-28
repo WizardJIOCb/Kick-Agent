@@ -685,7 +685,11 @@ app.post("/api/kick/send-message", async (req, res) => {
         return res.status(400).json({ error: "Отсутствует API Ключ Kickbot.com" });
       }
 
-      const cleanBroadcasterId = broadcasterId ? parseInt(broadcasterId, 10) : cleanChatroomId;
+      if (!broadcasterId) {
+        return res.status(400).json({ error: "Отсутствует ID канала (Broadcaster ID) для отправки через Kickbot API. Проверьте, что канал подключен на главной панели." });
+      }
+
+      const cleanBroadcasterId = parseInt(broadcasterId, 10);
       console.log(`[Kickbot Send] Posting to Kickbot.com chat API with broadcaster_id ${cleanBroadcasterId}...`);
       const response = await fetch("https://api.kickbot.com/v1/chat", {
         method: "POST",
@@ -710,7 +714,7 @@ app.post("/api/kick/send-message", async (req, res) => {
         throw new Error("Неверный или неактивный API Ключ Kickbot.com (Ошибка 401). Проверьте ключ во вкладке Settings внутри вашего личного кабинета Kickbot.com.");
       }
       if (response.status === 404) {
-        throw new Error("Чат-комната не найдена (Ошибка 404). Проверьте 'ID комнаты' (Chatroom ID) в левом верхнем углу интерфейса! Также убедитесь, что бот Kickbot подключен и является активным модератором на вашем канале.");
+        throw new Error("Канал не найден в Kickbot (Ошибка 404). Проверьте 'ID КАНАЛА' (Broadcaster ID) на главной панели. Также убедитесь, что бот Kickbot подключен к вашему каналу (кнопка 'Join Chat' в их панели) и является модератором.");
       }
       throw new Error(`Kickbot API вернул статус ${response.status}: ${errText}`);
     } else {

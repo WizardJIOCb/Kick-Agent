@@ -559,8 +559,9 @@ export default function AiBotSettings({
                       <li>С его помощью наш ИИ-Бот сможет мгновенно пересылать сообщения в чат вашего канала через их сервера!</li>
                     </ul>
                     <div className="mt-2 p-2 bg-yellow-950/20 border border-yellow-700/30 text-yellow-500 rounded-none text-3xs uppercase tracking-wider space-y-1">
-                      <p className="font-bold">⚠️ CRITICAL (В случае ошибки 404 Room Not Found):</p>
+                      <p className="font-bold">⚠️ ВАЖНО (В СЛУЧАЕ ОШИБКИ 404 NOT FOUND):</p>
                       <ol className="list-decimal pl-3 space-y-0.5 font-sans normal-case">
+                        <li>Убедитесь, что <span className="font-bold text-white">ID Канала</span> на главной панели указан верно. API Kickbot использует именно его.</li>
                         <li>Зайдите в свой чат на Kick.com и напишите команду <span className="font-mono font-bold text-white bg-yellow-900/40 px-1">/mod Kickbot</span>, чтобы сделать бота модератором.</li>
                         <li>В панели управления <a href="https://kickbot.com" target="_blank" rel="noreferrer" className="underline font-bold text-[#53FC18]">Kickbot.com</a> в разделе Dashboard обязательно нажмите зеленую кнопку <span className="font-bold text-white bg-green-700 px-1">Join Chat</span> (или переподключите канал). Без этого их API вернет ошибку 404.</li>
                       </ol>
